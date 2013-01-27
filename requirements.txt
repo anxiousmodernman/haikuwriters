@@ -1,0 +1,2 @@
+https://github.com/nltk/nltk3-alpha/blob/gh-pages/nltk-3.0a0.tar.gz?raw=true
+git+git://github.com/django/django.git@stable/1.5.x
