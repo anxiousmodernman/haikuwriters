@@ -3,10 +3,13 @@ from haikuwriters.scoring.tree.ScoreTree import ScoreTree, Score, nil, Add
 
 class TestScoreTree(TestCase):
     def test_str_nil(self):
-        self.assertEqual("nil", str(nil))
+        self.assertEqual("()", str(nil))
+
+    def test_str_nil_equals_empty(self):
+        self.assertEqual(str(ScoreTree()), str(nil))
 
     def test_str_score(self):
-        self.assertEqual("1", str(ScoreTree(Score(1))))
+        self.assertEqual("(1)", str(ScoreTree(Score(1))))
 
     def test_str_add(self):
         self.assertEqual("(1 + 1)", str(ScoreTree(Add(Score(1), Score(1)))))

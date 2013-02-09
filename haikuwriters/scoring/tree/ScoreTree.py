@@ -39,22 +39,16 @@ class Node:
             return builder
 
     def __str__(self):
-        return "nil"
+        return "" if self.data is None else str(self.data)
 
     def __repr__(self):
-        return empty
+        return repr(self.data)
 
 empty = Node(None)
 
 class Score(Node):
     def __init__(self, score:int):
         super().__init__(score)
-
-    def __str__(self):
-        return str(self.data)
-
-    def __repr__(self):
-        return repr(self.data)
 
 
 class Combinator(Node):
@@ -64,24 +58,18 @@ class Combinator(Node):
         self._right = right
 
     def __str__(self):
-        builder = "("
-        if self.left is not None:
-            builder += str(self.left)
-        builder += " " + self.data + " "
-        if self.right is not None:
-            builder += str(self.right)
-        builder += ")"
-        return builder
+        return (
+            str(self.left) + " " + str(self.data) + " " + str(self.right)
+        )
 
     def __repr__(self):
-        builder = self.__class__.__name__ + "("
-        if self.left is not None:
-            builder += repr(self.left)
-        builder += ", "
-        if self.right is not None:
-            builder += repr(self.right)
-        builder += ")"
-        return builder
+        return (self.__class__.__name__ +
+            "(" +
+                repr(self.left) +
+                ", " +
+                repr(self.right) +
+            ")"
+        )
 
 class Add(Combinator):
     def __init__(self, left:Node, right:Node):
@@ -99,9 +87,9 @@ class ScoreTree:
         return self.root == other.root
 
     def __str__(self):
-        return str(self.root)
+        return "(" + str(self.root) + ")"
 
     def __repr__(self):
-        return repr(self.root)
+        return self.__class__.__name__ + "(" + repr(self.root) + ")"
 
 nil = ScoreTree()
