@@ -1,5 +1,6 @@
 from unittest import TestCase
-from haikuwriters.scoring.tree import ScoreTree, Score, Nil, Add, Multiply
+from haikuwriters.scoring.oper import Add, Multiply
+from haikuwriters.scoring.tree import ScoreTree, Score, Nil
 
 
 class TestScoreTree(TestCase):
